@@ -1,0 +1,74 @@
+$main-clr: hsl(0, 0%, 80%);
+$second-clr: hsl(0, 0%, 60%);
+
+@mixin columnFlex($gap) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin inlineFlex() {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+body {
+  padding: 2rem;
+  min-height: 100vh;
+
+  @media (min-width: 60rem) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+button {
+  font-size: inherit;
+  font-family: inherit;
+  width: 80px;
+  height: 30px;
+
+  background: none;
+  border: 2px solid $second-clr;
+  border-radius: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: 0.8rem;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+.editor {
+  border: 3px solid $main-clr;
+  border-radius: 1rem;
+  padding: 2rem;
+
+  @include columnFlex(1rem);
+
+  section,
+  .group {
+    @include columnFlex(0.5rem);
+  }
+
+  section .groups-field {
+    @include columnFlex(1rem);
+  }
+
+  section .section-header {
+    @include inlineFlex();
+  }
+}

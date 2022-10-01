@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Editor from './components/Editor';
 import Preview from './components/Preview';
+import './styles/App.scss';
 
 class App extends Component {
   constructor(props) {
@@ -69,8 +70,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state)
-
     return (
       <div>
         <Editor

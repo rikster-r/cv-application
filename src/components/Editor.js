@@ -6,7 +6,7 @@ import Experience from "./editor/Experience";
 export default class Editor extends Component {
   render() {
     return (
-      <div>
+      <div className="editor">
         <Personal changePropertyInfo={this.props.changePropertyInfo} />
         <Experience
           changeListInfo={this.props.changeListInfo}

@@ -19,48 +19,47 @@ export default class Experience extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <section>
+        <div className="section-header">
           <h2>Work Experience</h2>
           <button onClick={this.addListElement}>Add</button>
         </div>
-        <div>
-          {Object.entries(this.props.userExperience).map(
-            ([id, item], index) => {
-              return (
-                <div id={id} key={index}>
-                  <input
-                    name="company"
-                    placeholder="Company"
-                    onChange={this.changeListInfo}
-                    value={item.course}
-                  />
-                  <input
-                    name="position"
-                    placeholder="Position"
-                    onChange={this.changeListInfo}
-                    value={item.university}
-                  />
-                  <input
-                    name="startDate"
-                    placeholder="Start Date"
-                    onChange={this.changeListInfo}
-                    value={item.startDate}
-                  />
-                  <input
-                    name="endDate"
-                    placeholder="End Date"
-                    onChange={this.changeListInfo}
-                    value={item.startDate}
-                  />
 
-                  <button onClick={this.removeListElement}>Delete</button>
-                </div>
-              );
-            }
-          )}
+        <div className="groups-field">
+          {Object.entries(this.props.userExperience).map(([id, item]) => {
+            return (
+              <div id={id} key={id} className="group">
+                <input
+                  name="company"
+                  placeholder="Company"
+                  onChange={this.changeListInfo}
+                  value={item.course}
+                />
+                <input
+                  name="position"
+                  placeholder="Position"
+                  onChange={this.changeListInfo}
+                  value={item.university}
+                />
+                <input
+                  name="startDate"
+                  placeholder="Start Date"
+                  onChange={this.changeListInfo}
+                  value={item.startDate}
+                />
+                <input
+                  name="endDate"
+                  placeholder="End Date"
+                  onChange={this.changeListInfo}
+                  value={item.startDate}
+                />
+
+                <button onClick={this.removeListElement}>Delete</button>
+              </div>
+            );
+          })}
         </div>
-      </div>
+      </section>
     );
   }
 }

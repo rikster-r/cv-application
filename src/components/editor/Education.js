@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export default class Education extends Component {
   changeListInfo = (e) => {
-    const id = e.closest("div").id;
+    const id = e.target.closest("div").id;
     this.props.changeListInfo(e, id, "education");
   };
 
@@ -13,21 +13,21 @@ export default class Education extends Component {
   };
 
   removeListElement = (e) => {
-    const id = e.closest("div").id;
+    const id = e.target.closest("div").id;
     this.props.removeListElement(id, "education");
   };
 
   render() {
     return (
-      <div>
-        <div>
+      <section>
+        <div className="section-header">
           <h2>Education</h2>
           <button onClick={this.addListElement}>Add</button>
         </div>
-        <div>
-          {Object.entries(this.props.userEducation).map(([id, item], index) => {
+        <div className="groups-field">
+          {Object.entries(this.props.userEducation).map(([id, item]) => {
             return (
-              <div id={id} key={index}>
+              <div id={id} key={id} className="group">
                 <input
                   name="course"
                   placeholder="Course"
@@ -58,7 +58,7 @@ export default class Education extends Component {
             );
           })}
         </div>
-      </div>
+      </section>
     );
   }
 }

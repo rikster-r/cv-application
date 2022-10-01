@@ -50,7 +50,7 @@ export default class Education extends Component {
                   name="endDate"
                   placeholder="End Date"
                   onChange={this.changeListInfo}
-                  value={item.startDate}
+                  value={item.endDate}
                 />
 
                 <button onClick={this.removeListElement}>Delete</button>

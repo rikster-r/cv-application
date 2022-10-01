@@ -8,12 +8,12 @@ class App extends Component {
     super(props);
 
     this.state = {
-      name: '',
-      title: '',
-      phone: '',
-      email: '',
-      location: '',
-      description: '',
+      name: 'John Doe',
+      title: 'Software Developer',
+      phone: '123 456 7890',
+      email: 'example@gmail.com',
+      location: 'New York, USA',
+      description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum quae, eum libero quisquam cupiditate rerum nesciunt deserunt vel quia ea obcaecati assumenda quos alias accusamus consequatur officia, quibusdam totam molestias.',
       education: {},
       experience: {}
     }

@@ -1,5 +1,7 @@
-$main-clr: hsl(0, 0%, 80%);
-$second-clr: hsl(0, 0%, 60%);
+$main-clr: #ccc;
+$second-clr: #555;
+$focus-clr: #0c4a6e;
+$focus-second-clr: #074c6e;
 
 @mixin columnFlex($gap) {
   display: flex;
@@ -14,28 +16,58 @@ $second-clr: hsl(0, 0%, 60%);
 }
 
 body {
+  display: flex;
+  justify-content: center;
   padding: 2rem;
   min-height: 100vh;
+}
 
-  @media (min-width: 60rem) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+#root > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  @media (min-width: 80rem) {
+    flex-direction: row;
   }
 }
 
 button {
-  font-size: inherit;
+  font-size: 0.9rem;
   font-family: inherit;
   width: 80px;
-  height: 30px;
-
-  background: none;
-  border: 2px solid $second-clr;
+  height: 28px;
+  border: 2px solid $focus-clr;
   border-radius: 5px;
 
-  &:hover {
+  background: none;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.5s ease 0s;
+  color: $focus-clr;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    height: 200px;
+    width: 250px;
+    border-radius: 50%;
+    bottom: 100%;
+    left: -30px;
+    transition: all 0.7s ease 0s;
+    background: $focus-clr;
+  }
+
+  &:hover,
+  &:focus {
     cursor: pointer;
+    color: #fff;
+
+    &::before {
+      bottom: -50px;
+    }
   }
 }
 
@@ -52,23 +84,101 @@ textarea {
   min-height: 100px;
 }
 
-.editor {
-  border: 3px solid $main-clr;
-  border-radius: 1rem;
-  padding: 2rem;
+h2 {
+  font-weight: 500;
+  font-size: 1.3rem;
+}
 
+.editor,
+.preview {
   @include columnFlex(1rem);
+  width: 550px;
+}
 
-  section,
+.editor {
+  min-height: 800px;
+  padding: 2rem;
+  border: 2px solid $focus-clr;
+  border-radius: 0.3rem;
+
   .group {
     @include columnFlex(0.5rem);
   }
 
-  section .groups-field {
-    @include columnFlex(1rem);
+  section {
+    @include columnFlex(0.5rem);
+
+    .groups-field {
+      @include columnFlex(1rem);
+    }
+
+    .section-header {
+      @include inlineFlex();
+    }
+  }
+}
+
+.preview {
+  height: 800px;
+  padding: 3rem;
+  border: 1px solid #000;
+  box-shadow: 1px -1px 4px $second-clr;
+  @include columnFlex(1rem);
+
+  .preview-header {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid $focus-clr;
+
+    .username {
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 2.5rem;
+      color: $focus-clr;
+    }
+
+    .title {
+      text-transform: capitalize;
+      font-weight: 500;
+    }
+
+    .info {
+      grid-row: 1 / 3;
+      grid-column: 2;
+
+      display: grid;
+      grid-template-columns: max-content max-content;
+      align-items: center;
+      gap: 0.3rem;
+
+      font-size: 0.8rem;
+    }
   }
 
-  section .section-header {
-    @include inlineFlex();
+  .description p {
+    font-size: 0.85rem;
+  }
+
+  .preview-list {
+    @include columnFlex(0.5rem);
+
+    .sub-title {
+      color: $focus-second-clr;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .list > div {
+      @include inlineFlex();
+      justify-content: space-between;
+      font-size: 0.8rem;
+      text-transform: capitalize;
+
+      .title {
+        color: $second-clr;
+      }
+    }
   }
 }
